@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mike — maker, engineer, builder</title>
+<meta name="description" content="Embedded systems, 3D printing, and self-hosted infrastructure. A running record of what I've built, what I'm doing now, and where I'm headed.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mike — maker, engineer, builder">
+<meta property="og:description" content="Embedded systems, 3D printing, and self-hosted infrastructure. A running record of what I've built, what I'm doing now, and where I'm headed.">
+<meta property="og:image" content="assets/og-cover.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-mark">M.</a>
+    <nav class="nav-links">
+      <a href="#journey">Journey</a>
+      <a href="#now">Now</a>
+      <a href="#work">Work</a>
+      <a href="#exploring">Exploring</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <p class="eyebrow">Hardware + software</p>
+    <h1>I build things, break them,<br>and figure out why.</h1>
+    <p class="hero-sub">Embedded systems, 3D printing, and self-hosted infrastructure — documented as I go, not polished after the fact. Based in Hyderabad, India.</p>
+    <a href="#journey" class="scroll-cue">See the journey <span aria-hidden="true">↓</span></a>
+  </section>
+
+  <section id="journey" class="section wrap reveal">
+    <p class="eyebrow">The journey</p>
+    <h2>How I got here</h2>
+
+    <ol class="journey-list">
+      <li class="journey-item">
+        <div class="media-placeholder" data-label="Photo — early Arduino / relay builds"></div>
+        <h3>Where it started</h3>
+        <p>Arduino, HC-05 Bluetooth modules, relay-based home automation. Learned mostly by breaking things and working backward to figure out why.</p>
+      </li>
+      <li class="journey-item">
+        <div class="media-placeholder" data-label="Photo — ESP32 / STM32 builds"></div>
+        <h3>Going deeper</h3>
+        <p>ESP32 BLE devices, RGB status systems, an STM32 dashboard simulated end to end. Started reading datasheets for fun, not just when something broke.</p>
+      </li>
+      <li class="journey-item">
+        <div class="media-placeholder" data-label="Photo — server / workbench setup"></div>
+        <h3>Systems, not just circuits</h3>
+        <p>Set up a self-hosted server from scratch and built a multi-agent system on top of it. Some days the soldering iron stays off and it's all SSH.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="now" class="section wrap reveal">
+    <p class="eyebrow">Right now</p>
+    <h2>What I'm working on</h2>
+    <div class="now-card">
+      <p class="now-card-title">A self-hosted multi-agent system, running on my own server</p>
+      <p class="now-card-body">Six coordinated agent roles, tracked on a kanban board, still getting the rough edges sanded down. It's the current home for most of my debugging hours.</p>
+    </div>
+  </section>
+
+  <section id="work" class="section wrap reveal">
+    <p class="eyebrow">Selected work</p>
+    <h2>A few things worth showing</h2>
+    <p class="section-note">Not everything — just what's furthest along.</p>
+
+    <div class="work-grid">
+      <article class="work-card">
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — EV dashboard sim"></div>
+        <h3>EV dashboard + ADAS warning system</h3>
+        <p>STM32-based dashboard and driver-assist warning system, simulated end to end in PICSimLab.</p>
+        <a href="#" class="work-link">View writeup ↗</a>
+      </article>
+
+      <article class="work-card">
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — server rack / terminal"></div>
+        <h3>Self-hosted AI infrastructure</h3>
+        <p>A personal VPS running a full multi-agent system, from bare metal to production, mesh-networked and monitored.</p>
+        <a href="#" class="work-link">View writeup ↗</a>
+      </article>
+
+      <article class="work-card">
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — 3D-printed idols"></div>
+        <h3>3D-printed dashboard idols</h3>
+        <p>Parametric OpenSCAD designs and heat-resistant materials research for a small-batch maker business.</p>
+        <a href="#" class="work-link">View writeup ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="exploring" class="section wrap reveal">
+    <p class="eyebrow">What I'm exploring</p>
+    <h2>Where the threads connect</h2>
+    <figure class="graph-figure">
+      <svg viewBox="0 0 700 400" role="img" aria-labelledby="graphTitle graphDesc" class="node-graph">
+        <title id="graphTitle">Skills and interests node graph</title>
+        <desc id="graphDesc">A central node, systems thinking, connects to four core areas: embedded systems, 3D printing and casting, AI agents, and self-hosted infrastructure. A fifth node, cloud infrastructure, connects with a dashed line, marking it as something being explored rather than a core skill.</desc>
+
+        <line x1="350" y1="120" x2="130" y2="65" class="trace"/>
+        <line x1="350" y1="120" x2="580" y2="65" class="trace"/>
+        <line x1="350" y1="164" x2="145" y2="255" class="trace"/>
+        <line x1="350" y1="164" x2="555" y2="255" class="trace"/>
+        <line x1="350" y1="164" x2="350" y2="300" class="trace trace--dashed"/>
+
+        <g class="node node--core">
+          <rect x="255" y="120" width="190" height="44" rx="6"/>
+          <text x="350" y="142" text-anchor="middle" dominant-baseline="central">Systems thinking</text>
+        </g>
+
+        <g class="node">
+          <rect x="45" y="45" width="170" height="40" rx="6"/>
+          <text x="130" y="65" text-anchor="middle" dominant-baseline="central">Embedded systems</text>
+        </g>
+        <g class="node">
+          <rect x="505" y="45" width="150" height="40" rx="6"/>
+          <text x="580" y="65" text-anchor="middle" dominant-baseline="central">3D printing &amp; casting</text>
+        </g>
+        <g class="node">
+          <rect x="45" y="235" width="200" height="40" rx="6"/>
+          <text x="145" y="255" text-anchor="middle" dominant-baseline="central">AI agents</text>
+        </g>
+        <g class="node">
+          <rect x="455" y="235" width="200" height="40" rx="6"/>
+          <text x="555" y="255" text-anchor="middle" dominant-baseline="central">Self-hosted infra</text>
+        </g>
+
+        <g class="node node--exploring">
+          <rect x="270" y="300" width="160" height="36" rx="6" stroke-dasharray="3 3"/>
+          <text x="350" y="318" text-anchor="middle" dominant-baseline="central">Cloud infra — new</text>
+        </g>
+
+        <g class="legend">
+          <line x1="270" y1="360" x2="296" y2="360" class="trace"/>
+          <text x="302" y="360" text-anchor="start" dominant-baseline="central" class="legend-text">Core</text>
+          <line x1="360" y1="360" x2="386" y2="360" class="trace trace--dashed"/>
+          <text x="392" y="360" text-anchor="start" dominant-baseline="central" class="legend-text">Exploring</text>
+        </g>
+      </svg>
+    </figure>
+  </section>
+
+  <section id="direction" class="section wrap reveal">
+    <p class="eyebrow">Where I'm headed</p>
+    <h2>What I'm looking for</h2>
+    <p class="direction-text">Roles where hardware and software meet — embedded systems, robotics, or applied AI. Somewhere I can keep building real things, not just diagramming them.</p>
+  </section>
+
+  <section id="scope" class="section wrap reveal">
+    <p class="eyebrow">What I'm not doing yet</p>
+    <p class="scope-text">Not chasing cloud-scale backend work or deep ML research right now. Staying focused on hardware-software integration until that's solid — everything else is deliberately parked.</p>
+  </section>
+
+  <section id="contact" class="section wrap reveal contact">
+    <p class="eyebrow">Get in touch</p>
+    <h2>Let's talk</h2>
+    <div class="contact-links">
+      <a href="mailto:your.email@example.com">Email</a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/yourusername" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer wrap">
+  <p>Built and self-hosted by Mike.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
