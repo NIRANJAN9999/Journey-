@@ -243,10 +243,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <!-- ===== HERO — one line, says who I am ===== -->
 <div class="hero" id="top">
   <div class="eyebrow">Niranjan</div>
-  <h1>I take things apart to understand them. I'm still doing it.</h1>
+  <h1>Still opening things up
+to see how they work.
+</h1>
   <a href="#story" class="tag">
     <span class="dot-lg"></span>
-    <span class="tag-text">Opening things apart since before I owned a screwdriver</span>
+    <span class="tag-text">I take things apart to understand them. i'm doing it before I own a screwdriver</span>
   </a>
 </div>
 
@@ -257,8 +259,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   <div class="entry">
     <div class="status"><span class="status-label">Active</span></div>
     <div>
-      <h3>Finding where cheap tech fits</h3>
-      <p>Not learning the basics anymore. Trying to figure out where a small, cheap sensor or chip actually makes something better — not just where it can be added.</p>
+      <h3>Finding where tech fits</h3>
+      <p>Not learning the basics anymore. Trying to figure out where a small, sensor or chip actually makes something better — not just where it can be added.</p>
     </div>
   </div>
 
@@ -274,7 +276,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <div class="status"><span class="status-label">Active</span></div>
     <div>
       <h3>Fixing what's around me</h3>
-      <p>Lights, fans, small things that break and get thrown out. I open them first, then decide if I'm fixing it or building something better.</p>
+      <p>Lights, Motors, small things that break and get thrown out. I open them first, then decide if I'm fixing it or building something better.</p>
     </div>
   </div>
 
