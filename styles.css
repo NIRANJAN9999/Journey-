@@ -152,6 +152,42 @@ p { color: var(--ink-secondary); margin: 0 0 12px; }
   }
 }
 
+/* assembly animation */
+.assembly-wrap { height: 260vh; position: relative; }
+
+.assembly-pin {
+  position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; padding: 24px;
+}
+
+.assembly-svg { width: min(640px, 88vw); height: auto; overflow: visible; }
+
+.assembly-svg .part rect,
+.assembly-svg .part circle,
+.assembly-svg .part line {
+  fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round;
+}
+
+.assembly-svg .part--accent circle { stroke: var(--accent); }
+.assembly-svg .part--accent rect { fill: var(--accent); stroke: none; }
+.assembly-svg .part--accent .hole { fill: var(--bg); stroke: none; }
+
+.assembly-svg .part { transform-box: fill-box; transform-origin: center; }
+
+.assembly-caption {
+  margin-top: 32px;
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.05rem; color: var(--ink-secondary);
+  opacity: 0; transition: opacity 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assembly-wrap { height: auto; }
+  .assembly-pin { position: relative; height: auto; padding: 80px 24px; }
+  .assembly-caption { opacity: 1; }
+}
+
 /* timeline */
 .timeline { position: relative; padding: 96px 24px; }
 
@@ -208,6 +244,18 @@ p { color: var(--ink-secondary); margin: 0 0 12px; }
 }
 
 .media-placeholder--wide { aspect-ratio: 16 / 10; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .chapter .media-placeholder,
+  .work-card .media-placeholder {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .chapter.in-view .media-placeholder,
+  .work-card.in-view .media-placeholder {
+    clip-path: inset(0 0 0% 0);
+  }
+}
 
 /* intertitle */
 .intertitle {

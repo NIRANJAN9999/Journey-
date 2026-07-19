@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Niranjan — still opening things up to see how they work</title>
+<title>Mike — still opening things up to see how they work</title>
 <meta name="description" content="A running documentary of what I've built, what I'm doing now, and where I'm headed. Embedded systems, 3D printing, and self-taught electronics.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Niranjan — still opening things up to see how they work">
+<meta property="og:title" content="Mike — still opening things up to see how they work">
 <meta property="og:description" content="A running documentary of what I've built, what I'm doing now, and where I'm headed.">
-<meta property="og:image" content="test16.10.jpg">
+<meta property="og:image" content="assets/og-cover.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,34 +35,65 @@
     <a href="#chapter-01" class="scroll-cue"><span>Scroll</span><i aria-hidden="true"></i></a>
   </section>
 
+  <section class="assembly-wrap">
+    <div class="assembly-pin">
+      <svg class="assembly-svg" viewBox="0 0 640 420" role="img" aria-label="A line illustration of a toy car assembling itself from separate parts as you scroll: wheels, chassis, cabin, a gear, and a few screws coming together.">
+        <g class="part" data-ex="0,150,0"><rect x="170" y="200" width="300" height="70" rx="16"></rect></g>
+        <g class="part" data-ex="-50,-170,-20"><rect x="230" y="150" width="140" height="58" rx="18"></rect></g>
+        <g class="part" data-ex="-230,110,-90">
+          <circle cx="230" cy="280" r="34"></circle>
+          <line x1="230" y1="260" x2="230" y2="300"></line>
+          <line x1="210" y1="280" x2="250" y2="280"></line>
+        </g>
+        <g class="part" data-ex="250,120,90">
+          <circle cx="410" cy="280" r="34"></circle>
+          <line x1="410" y1="260" x2="410" y2="300"></line>
+          <line x1="390" y1="280" x2="430" y2="280"></line>
+        </g>
+        <g class="part" data-ex="190,-90,50"><circle cx="460" cy="222" r="8"></circle></g>
+        <g class="part part--accent" data-ex="0,-190,200">
+          <circle cx="300" cy="233" r="18"></circle>
+          <rect x="296" y="211" width="8" height="10"></rect>
+          <rect x="296" y="245" width="8" height="10"></rect>
+          <rect x="274" y="229" width="10" height="8"></rect>
+          <rect x="308" y="229" width="10" height="8"></rect>
+          <circle class="hole" cx="300" cy="233" r="5"></circle>
+        </g>
+        <g class="part" data-ex="-170,-150,0"><circle cx="190" cy="204" r="5"></circle><line x1="187" y1="204" x2="193" y2="204"></line></g>
+        <g class="part" data-ex="190,-160,0"><circle cx="390" cy="204" r="5"></circle><line x1="387" y1="204" x2="393" y2="204"></line></g>
+      </svg>
+      <p class="assembly-caption" id="assemblyCaption">Every build starts in pieces.</p>
+    </div>
+  </section>
+
   <section class="timeline wrap">
     <div class="timeline-track"><div class="timeline-fill" id="timelineFill"></div></div>
 
     <article class="chapter reveal" id="chapter-01">
       <p class="chapter-num">01</p>
       <h2>The curiosity</h2>
-      <img src="assets/test14.3.jpg" alt="Description of the photo">
+      <div class="media-placeholder" data-label="Photo — a toy RC car, taken apart"></div>
       <p>It started with remote control cars from the local Mahankaali and Shivaratri fairs — and the need to know what was inside them. No screwdriver, so a sharpener blade and a pair of scissors did the job. Not everything went back together working, and there were consequences for that at home. The curiosity never really left.</p>
     </article>
 
     <article class="chapter reveal">
       <p class="chapter-num">02</p>
       <h2>Learning by breaking</h2>
-      <img src="assets/test14.3.jpg" alt="Description of the photo">
+      <div class="media-placeholder" data-label="Photo — cycle, or the motor-and-LED rig"></div>
       <p>In 7th grade, I wired my new cycle with hidden lights that only switched on when I braked — using the brake pads themselves as the switch. A friend later showed me how to spin an old motor to generate current and light an LED, jugaad-rigged to the wheel. When it burned out, I opened it up and fixed it with copper wire. I also learned, the hard way, that a 12V LED does not appreciate an AC socket.</p>
     </article>
 
     <article class="chapter reveal">
       <p class="chapter-num">03</p>
       <h2>Finding the path</h2>
-      <img src="assets/test14.3.jpg" alt="Description of the photo">
+      <div class="media-placeholder" data-label="Photo — CAD work, or the diploma lab"></div>
       <p>A diploma in mechanical engineering came first — gears, engines, CAD basics, real machining in the labs. Then a deliberate switch to a B.Tech in computer science, chasing the coding and electronics itch that never left.</p>
     </article>
 
     <article class="chapter reveal" id="chapter-04">
       <p class="chapter-num">04</p>
       <h2>Building for real</h2>
-      <img src="assets/test14.3.jpg" alt="Description of the photo">
+      <div class="media-placeholder" data-label="Photo — first Arduino / ESP32 build"></div>
       <p>Got a laptop, installed the Arduino IDE, bought a few microcontrollers, and started building from YouTube tutorials — code that sometimes worked, sometimes didn't, slowly learning why. Taught myself phone repair the same way. That path led to ESP32, home automation, and a self-hosted server running a multi-agent AI system today.</p>
     </article>
   </section>
@@ -86,7 +117,7 @@
         </article>
 
         <article class="work-card reveal">
-          <img src="assets/test16.10.jpg" alt="Description of the photo">
+          <div class="media-placeholder media-placeholder--wide" data-label="Photo — home automation setup"></div>
           <h3>Home automation with ESP32</h3>
           <p>Lights and fans in my home, controlled from my phone via ESP32 and Google Home. Still running today.</p>
         </article>
