@@ -3,287 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Niranjan Sharabani — builder, from RC cars to embedded systems</title>
-<meta name="description" content="A running journey from taking apart remote-control cars as a kid to embedded systems, 3D printing, and resin casting — documented as it happens, not polished after the fact.">
+<title>Mike — still opening things up to see how they work</title>
+<meta name="description" content="A running documentary of what I've built, what I'm doing now, and where I'm headed. Embedded systems, 3D printing, and self-taught electronics.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Niranjan Sharabani — builder, from RC cars to embedded systems">
-<meta property="og:description" content="A running journey from taking apart remote-control cars as a kid to embedded systems, 3D printing, and resin casting.">
+<meta property="og:title" content="Mike — still opening things up to see how they work">
+<meta property="og:description" content="A running documentary of what I've built, what I'm doing now, and where I'm headed.">
 <meta property="og:image" content="assets/og-cover.jpg">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='4' fill='%232F5C4D'/%3E%3Cline x1='11' y1='0' x2='11' y2='4' stroke='%232F5C4D' stroke-width='2'/%3E%3Cline x1='11' y1='18' x2='11' y2='22' stroke='%232F5C4D' stroke-width='2'/%3E%3Cline x1='0' y1='11' x2='4' y2='11' stroke='%232F5C4D' stroke-width='2'/%3E%3Cline x1='18' y1='11' x2='22' y2='11' stroke='%232F5C4D' stroke-width='2'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="progress" id="progress"></div>
+<a href="#top" class="mark">M.</a>
 
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" class="nav-mark" aria-label="Back to top">
-      <svg class="nav-mark-icon" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
-        <circle cx="11" cy="11" r="4"/>
-        <line x1="11" y1="0" x2="11" y2="4"/>
-        <line x1="11" y1="18" x2="11" y2="22"/>
-        <line x1="0" y1="11" x2="4" y2="11"/>
-        <line x1="18" y1="11" x2="22" y2="11"/>
-      </svg>
-    </a>
-    <nav class="nav-links">
-      <a href="#journey">Journey</a>
-      <a href="#now">Now</a>
-      <a href="#work">Work</a>
-      <a href="#exploring">Exploring</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+<a href="#now" class="quick-now" id="quickNow">What I'm doing now <span aria-hidden="true">→</span></a>
 
 <main id="top">
 
-  <section class="hero" id="hero">
-    <div class="hero-gear" aria-hidden="true">
-      <svg viewBox="0 0 300 300" width="300" height="300">
-        <defs>
-          <rect id="gearTooth" x="140" y="30" width="20" height="32" rx="3"/>
-        </defs>
-        <g class="hero-gear-shape">
-          <use href="#gearTooth"/>
-          <use href="#gearTooth" transform="rotate(36 150 150)"/>
-          <use href="#gearTooth" transform="rotate(72 150 150)"/>
-          <use href="#gearTooth" transform="rotate(108 150 150)"/>
-          <use href="#gearTooth" transform="rotate(144 150 150)"/>
-          <use href="#gearTooth" transform="rotate(180 150 150)"/>
-          <use href="#gearTooth" transform="rotate(216 150 150)"/>
-          <use href="#gearTooth" transform="rotate(252 150 150)"/>
-          <use href="#gearTooth" transform="rotate(288 150 150)"/>
-          <use href="#gearTooth" transform="rotate(324 150 150)"/>
-          <circle cx="150" cy="150" r="88"/>
-          <circle cx="150" cy="150" r="36" class="hero-gear-hole"/>
-        </g>
-      </svg>
+  <section class="hero">
+    <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">A documentary in progress</p>
+      <h1>Still opening things up<br>to see how they work.</h1>
+      <p class="hero-sub">Embedded systems, 3D printing, and self-taught electronics — from a childhood curiosity that never really stopped. Based in Hyderabad, India.</p>
     </div>
-    <div class="wrap hero-content">
-      <p class="hero-name">Niranjan Sharabani</p>
-      <h1>I take things apart to understand them. I'm still doing it.</h1>
-      <p class="hero-sub">Remote-control cars, cycles, phones, motors — and now embedded systems, 3D printing, and resin casting. This is a record of that, built as it happens, not polished after the fact. Based in Hyderabad, India.</p>
-      <a href="#journey" class="scroll-cue">See how it started <span aria-hidden="true">↓</span></a>
-    </div>
+    <a href="#chapter-01" class="scroll-cue"><span>Scroll</span><i aria-hidden="true"></i></a>
   </section>
 
-  <section id="journey" class="section wrap reveal">
-    <p class="eyebrow">The journey</p>
-    <h2>How I got here</h2>
+  <section class="timeline wrap">
+    <div class="timeline-track"><div class="timeline-fill" id="timelineFill"></div></div>
 
-    <ol class="journey-list">
-      <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — a remote-control car like the ones you took apart as a kid"></div>
-        <h3>Where it started</h3>
-        <p>At the yearly fairs in my hometown — Mahankaali Jaathara, Shivaratri Jaathara — the toy every kid wanted was a remote-control car. I'd get one, play with it for a few days, then take it apart with a sharpener blade and a pair of scissors, since I didn't own a screwdriver yet. I wanted to see the motor, the gears, the wiring underneath. Putting it back together didn't always go well. My parents eventually stopped buying me new ones, so I started saving pocket money to buy my own.</p>
-      </li>
+    <article class="chapter reveal" id="chapter-01">
+      <p class="chapter-num">01</p>
+      <h2>The curiosity</h2>
+      <div class="media-placeholder" data-label="Photo — a toy RC car, taken apart"></div>
+      <p>It started with remote control cars from the local Mahankaali and Shivaratri fairs — and the need to know what was inside them. No screwdriver, so a sharpener blade and a pair of scissors did the job. Not everything went back together working, and there were consequences for that at home. The curiosity never really left.</p>
+    </article>
 
-      <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — the cycle light setup, or a similar hidden-wiring project"></div>
-        <h3>The first real build</h3>
-        <p>In 7th grade, I wired my new cycle with a hidden light — the battery tucked inside the seat, wires hidden along the frame, wired so the light only came on when I braked. The brake pads doubled as the switch: two contacts, touching the wheel rim, closing the circuit.</p>
-      </li>
+    <article class="chapter reveal">
+      <p class="chapter-num">02</p>
+      <h2>Learning by breaking</h2>
+      <div class="media-placeholder" data-label="Photo — cycle, or the motor-and-LED rig"></div>
+      <p>In 7th grade, I wired my new cycle with hidden lights that only switched on when I braked — using the brake pads themselves as the switch. A friend later showed me how to spin an old motor to generate current and light an LED, jugaad-rigged to the wheel. When it burned out, I opened it up and fixed it with copper wire. I also learned, the hard way, that a 12V LED does not appreciate an AC socket.</p>
+    </article>
 
-      <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — a motor teardown or the copper-wire fix"></div>
-        <h3>Learning by breaking things</h3>
-        <p>A friend showed me how to spin an old motor fast enough to generate current — enough to light a small LED, rigged to my cycle wheel with whatever held it together. It worked, until the motor burned out from the speed. I opened it up, found the burned terminals, and replaced them with copper wire. It ran for a few more days after that. Around the same time, I wired a 12V LED straight into a wall socket, on the theory that voltage was voltage. It wasn't. I still remember that short circuit clearly — the first time I learned that electricity doesn't forgive guessing.</p>
-      </li>
+    <article class="chapter reveal">
+      <p class="chapter-num">03</p>
+      <h2>Finding the path</h2>
+      <div class="media-placeholder" data-label="Photo — CAD work, or the diploma lab"></div>
+      <p>A diploma in mechanical engineering came first — gears, engines, CAD basics, real machining in the labs. Then a deliberate switch to a B.Tech in computer science, chasing the coding and electronics itch that never left.</p>
+    </article>
 
-      <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — early phone repair or coding setup"></div>
-        <h3>Screens, then code</h3>
-        <p>When my phone's power button stopped working, I opened it with the same old blade — turned out the fix needed soldering, which I didn't have yet, so a repair shop finished the job. But taking it apart pulled me toward what was inside it in a different way: I started learning to code, edit photos and video, and run basic command-line tools on the phone itself. That was around 10th grade.</p>
-      </li>
-
-      <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — CAD work, machining, or the diploma workshop"></div>
-        <div class="beat-heading">
-          <svg class="beat-icon" viewBox="0 0 40 40" width="20" height="20" aria-hidden="true">
-            <rect x="17" y="1" width="6" height="10" rx="1.5"/>
-            <rect x="17" y="29" width="6" height="10" rx="1.5"/>
-            <rect x="1" y="17" width="10" height="6" rx="1.5"/>
-            <rect x="29" y="17" width="10" height="6" rx="1.5"/>
-            <circle cx="20" cy="20" r="10"/>
-          </svg>
-          <h3>A detour that wasn't wasted</h3>
-        </div>
-        <p>I got a mechanical engineering seat in college — not the computer science one I'd actually asked for. Three years in, I'd learned how gears and engines work, how to file and fit metal by hand, what a driveshaft and a universal joint actually do, and a little CAD. Old car-restoration shows kept me interested the whole way through. When the chance came to study computer science properly, I took it — but the mechanical years turned out to matter more than I expected at the time.</p>
-      </li>
-
-      <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — Arduino / ESP32 breadboard setup"></div>
-        <h3>Teaching myself the rest</h3>
-        <p>With a laptop of my own, I installed the Arduino IDE, bought a handful of microcontrollers, and learned mostly from YouTube — pasting code from video descriptions, running it, and slowly working out why it worked when it did and why it didn't when it didn't. ESP32 boards, LEDs, resistors, motor drivers. Around the same time, I fixed my own phone's battery, then a friend's, using nothing but tutorials and a soldering iron I'd bought myself.</p>
-      </li>
-
-      <li class="journey-item journey-item--highlight">
-        <p class="highlight-tag">
-          <svg class="beat-icon beat-icon--accent" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-            <path d="M13 2 4 14h6l-1 8 9-12h-6z"/>
-          </svg>
-          Full circle
-        </p>
-        <h3>The car, finished</h3>
-        <p class="highlight-text">At 20, I built the remote-control car I'd wanted to build since I was a kid — this time from scratch, driven from my own phone over Bluetooth. Same curiosity, fifteen years later, just with the skills to finish what I used to take apart.</p>
-        <div class="then-now">
-          <div class="media-placeholder media-placeholder--square" data-label="Then — a remote-control car like the ones you took apart"></div>
-          <span class="then-now-arrow" aria-hidden="true">→</span>
-          <div class="media-placeholder media-placeholder--square" data-label="Now — the Bluetooth car you built at 20"></div>
-        </div>
-      </li>
-    </ol>
+    <article class="chapter reveal" id="chapter-04">
+      <p class="chapter-num">04</p>
+      <h2>Building for real</h2>
+      <div class="media-placeholder" data-label="Photo — first Arduino / ESP32 build"></div>
+      <p>Got a laptop, installed the Arduino IDE, bought a few microcontrollers, and started building from YouTube tutorials — code that sometimes worked, sometimes didn't, slowly learning why. Taught myself phone repair the same way. That path led to ESP32, home automation, and a self-hosted server running a multi-agent AI system today.</p>
+    </article>
   </section>
 
-  <section id="now" class="section wrap reveal">
-    <p class="eyebrow">Right now</p>
-    <h2>What I'm doing at the moment</h2>
-    <div class="now-card">
-      <p class="now-card-title">A day job outside my field, and real work in the evenings</p>
-      <p class="now-card-body">A course toward an AI/ML role taught me a lot — the interview process taught me more, and not gently. About a year in, I stepped back. These days I work in documentation to cover rent, and the hours after that go to 3D printing, resin casting, and a lamp I'm building to sell.</p>
+  <section class="intertitle reveal">
+    <p>I never stopped opening things up.</p>
+  </section>
+
+  <section id="work" class="work-section">
+    <div class="work-blob" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="reveal">A few things worth showing</h2>
+      <p class="section-note reveal">Not everything — just what's furthest along.</p>
+
+      <div class="work-grid">
+        <article class="work-card reveal">
+          <div class="media-placeholder media-placeholder--wide" data-label="Photo — the RC car rebuild"></div>
+          <h3>Bluetooth-controlled RC car</h3>
+          <p>Built a working remote control car at 20 — the same idea I broke apart as a kid, this time from scratch, controlled from my phone over Bluetooth.</p>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="media-placeholder media-placeholder--wide" data-label="Photo — home automation setup"></div>
+          <h3>Home automation with ESP32</h3>
+          <p>Lights and fans in my home, controlled from my phone via ESP32 and Google Home. Still running today.</p>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="media-placeholder media-placeholder--wide" data-label="Photo — 3D prints and resin casts"></div>
+          <h3>3D printing &amp; resin casting</h3>
+          <p>Started with an FDM printer a year ago. Now experimenting with resin and silicone molds to get past visible layer lines.</p>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="media-placeholder media-placeholder--wide" data-label="Photo — the wood-and-print lamp"></div>
+          <h3>Wood-and-print table lamp</h3>
+          <p>A table lamp with a wood base and a 3D-printed shade — my first real attempt at turning a build into a small product.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section id="work" class="section wrap reveal">
-    <p class="eyebrow">Selected work</p>
-    <h2>A few things worth showing</h2>
-    <p class="section-note">Not everything — just what's furthest along.</p>
-
-    <div class="work-grid">
-      <article class="work-card">
-        <div class="media-placeholder media-placeholder--wide" data-label="Photo — the finished RC car"></div>
-        <h3>The RC car, finished</h3>
-        <p>Built at 20, driven from my phone over Bluetooth — the car I always wanted to build the first time I took one apart.</p>
-        <a href="#" class="work-link">View writeup ↗</a>
-      </article>
-
-      <article class="work-card">
-        <div class="media-placeholder media-placeholder--wide" data-label="Photo — home automation setup or app"></div>
-        <h3>Home automation that's still running</h3>
-        <p>ESP32 boards and Google Home controlling the lights and fan at home. Set up a while ago, still working, no maintenance drama.</p>
-
-        <!-- Optional sample code block (the code-block div right below). Delete the whole thing if you don't want it, or swap the snippet for real code from your project. -->
-        <div class="code-block">
-          <p class="code-block-label">home-automation.ino</p>
-          <pre><code><span class="code-comment">// sample — swap with your real snippet</span>
-
-void setLight(bool on) {
-  digitalWrite(RELAY_PIN, on ? HIGH : LOW);
-  mqtt.publish("home/light", on ? "ON" : "OFF");
-}
-
-void loop() {
-  mqtt.loop();
-  checkWifiConnection();
-}</code></pre>
-        </div>
-        <!-- End optional code block -->
-
-        <a href="#" class="work-link">View writeup ↗</a>
-      </article>
-
-      <article class="work-card">
-        <div class="media-placeholder media-placeholder--wide" data-label="Photo — 3D-printed idols or resin pieces"></div>
-        <h3>3D printing and resin casting</h3>
-        <p>Printing idols and parts on my own printer, then picking up resin and silicone molding to get past the layer lines that plain 3D printing leaves behind.</p>
-        <a href="#" class="work-link">View writeup ↗</a>
-      </article>
-
-      <article class="work-card">
-        <div class="media-placeholder media-placeholder--wide" data-label="Photo — the lamp, in progress"></div>
-        <span class="tag">In progress</span>
-        <h3>A lamp, in progress</h3>
-        <p>Wood base, 3D-printed shade — my first real attempt at turning this into a small product business.</p>
-        <a href="#" class="work-link">View writeup ↗</a>
-      </article>
+  <section id="now" class="now-section">
+    <div class="wrap">
+      <p class="eyebrow reveal">Right now</p>
+      <div class="now-card reveal">
+        <p>Working a job outside my field to pay the bills, while building toward embedded systems and firmware on the side — soldering, 3D printing, and a self-hosted AI system on my own server.</p>
+      </div>
     </div>
   </section>
 
-  <section id="exploring" class="section wrap reveal">
-    <p class="eyebrow">What I'm exploring</p>
-    <h2>Where the threads connect</h2>
-    <figure class="graph-figure">
-      <svg viewBox="0 0 700 400" role="img" aria-labelledby="graphTitle graphDesc" class="node-graph">
-        <title id="graphTitle">Skills and interests node graph</title>
-        <desc id="graphDesc">A central node, systems thinking, connects to four core areas: embedded systems, 3D printing and casting, mechanical design and CAD, and software fundamentals. A fifth node, small-batch product business, connects with a dashed line, marking it as something being explored rather than a core skill.</desc>
-
-        <line x1="350" y1="120" x2="130" y2="65" class="trace"/>
-        <line x1="350" y1="120" x2="560" y2="65" class="trace"/>
-        <line x1="350" y1="164" x2="145" y2="255" class="trace"/>
-        <line x1="350" y1="164" x2="555" y2="255" class="trace"/>
-        <line x1="350" y1="164" x2="350" y2="298" class="trace trace--dashed"/>
-
-        <g class="node node--core">
-          <rect x="255" y="120" width="190" height="44" rx="6"/>
-          <text x="350" y="142" text-anchor="middle" dominant-baseline="central">Systems thinking</text>
-        </g>
-
-        <g class="node">
-          <rect x="45" y="45" width="170" height="40" rx="6"/>
-          <text x="130" y="65" text-anchor="middle" dominant-baseline="central">Embedded systems</text>
-        </g>
-        <g class="node">
-          <rect x="465" y="45" width="190" height="40" rx="6"/>
-          <text x="560" y="65" text-anchor="middle" dominant-baseline="central">3D printing &amp; casting</text>
-        </g>
-        <g class="node">
-          <rect x="35" y="235" width="220" height="40" rx="6"/>
-          <text x="145" y="255" text-anchor="middle" dominant-baseline="central">Mechanical design &amp; CAD</text>
-        </g>
-        <g class="node">
-          <rect x="455" y="235" width="200" height="40" rx="6"/>
-          <text x="555" y="255" text-anchor="middle" dominant-baseline="central">Software fundamentals</text>
-        </g>
-
-        <g class="node node--exploring">
-          <rect x="210" y="298" width="280" height="38" rx="6" stroke-dasharray="3 3"/>
-          <text x="350" y="317" text-anchor="middle" dominant-baseline="central">Small-batch product business — new</text>
-        </g>
-
-        <g class="legend">
-          <line x1="270" y1="360" x2="296" y2="360" class="trace"/>
-          <text x="302" y="360" text-anchor="start" dominant-baseline="central" class="legend-text">Core</text>
-          <line x1="360" y1="360" x2="386" y2="360" class="trace trace--dashed"/>
-          <text x="392" y="360" text-anchor="start" dominant-baseline="central" class="legend-text">Exploring</text>
-        </g>
-      </svg>
-    </figure>
-  </section>
-
-  <section id="direction" class="section wrap reveal">
+  <section class="direction wrap reveal">
     <p class="eyebrow">Where I'm headed</p>
-    <h2>What I'm looking for</h2>
-    <p class="direction-text">Work where hardware and software meet — embedded systems, firmware, robotics, or applied AI. Something that ends in a thing that works, not a diagram of one.</p>
+    <p class="direction-text">Looking for work in embedded systems or firmware — something that builds real, physical things and solves real problems. Not just moves tickets.</p>
   </section>
 
-  <section id="scope" class="section wrap reveal">
-    <p class="eyebrow">Where I'm honest about the gap</p>
-    <p class="scope-text">I haven't shipped anything at production scale yet, and I'm not chasing deep ML research or pure backend work right now. The focus is hardware-software integration — getting that solid before spreading wider.</p>
+  <section class="scope wrap reveal">
+    <p class="eyebrow">What I'm not doing yet</p>
+    <p class="scope-text">Not chasing cloud-scale backend work right now. Staying close to hardware until that's solid.</p>
   </section>
 
-  <section id="contact" class="section wrap reveal contact">
+  <section id="contact" class="contact wrap reveal">
     <p class="eyebrow">Get in touch</p>
     <h2>Let's talk</h2>
     <div class="contact-links">
-      <a href="mailto:niranjansharabani22@gmail.com">Email</a>
-      <a href="https://github.com/NIRANJAN9999/" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/niranjan-sharabani-825a892b9/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.instagram.com/niranjan0s/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:your.email@example.com">Email</a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/yourusername" target="_blank" rel="noopener">Instagram</a>
     </div>
   </section>
 
 </main>
 
 <footer class="footer wrap">
-  <p>Built by Niranjan Sharabani.</p>
+  <p>Built and self-hosted by Mike.</p>
 </footer>
 
 <script src="script.js"></script>
