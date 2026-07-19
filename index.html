@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mike — maker, engineer, builder</title>
-<meta name="description" content="Embedded systems, 3D printing, and self-hosted infrastructure. A running record of what I've built, what I'm doing now, and where I'm headed.">
+<title>Your Name — builder, from RC cars to embedded systems</title>
+<meta name="description" content="A running journey from taking apart remote-control cars as a kid to embedded systems, 3D printing, and a self-hosted AI system today — documented as it happens, not polished after the fact.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mike — maker, engineer, builder">
-<meta property="og:description" content="Embedded systems, 3D printing, and self-hosted infrastructure. A running record of what I've built, what I'm doing now, and where I'm headed.">
+<meta property="og:title" content="Your Name — builder, from RC cars to embedded systems">
+<meta property="og:description" content="A running journey from taking apart remote-control cars as a kid to embedded systems, 3D printing, and a self-hosted AI system today.">
 <meta property="og:image" content="assets/og-cover.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='4' fill='%232F5C4D'/%3E%3Cline x1='11' y1='0' x2='11' y2='4' stroke='%232F5C4D' stroke-width='2'/%3E%3Cline x1='11' y1='18' x2='11' y2='22' stroke='%232F5C4D' stroke-width='2'/%3E%3Cline x1='0' y1='11' x2='4' y2='11' stroke='%232F5C4D' stroke-width='2'/%3E%3Cline x1='18' y1='11' x2='22' y2='11' stroke='%232F5C4D' stroke-width='2'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,7 +24,15 @@
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="nav-mark">M.</a>
+    <a href="#top" class="nav-mark" aria-label="Back to top">
+      <svg class="nav-mark-icon" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+        <circle cx="11" cy="11" r="4"/>
+        <line x1="11" y1="0" x2="11" y2="4"/>
+        <line x1="11" y1="18" x2="11" y2="22"/>
+        <line x1="0" y1="11" x2="4" y2="11"/>
+        <line x1="18" y1="11" x2="22" y2="11"/>
+      </svg>
+    </a>
     <nav class="nav-links">
       <a href="#journey">Journey</a>
       <a href="#now">Now</a>
@@ -36,10 +46,11 @@
 <main id="top">
 
   <section class="hero wrap">
-    <p class="eyebrow">Hardware + software</p>
-    <h1>I build things, break them,<br>and figure out why.</h1>
-    <p class="hero-sub">Embedded systems, 3D printing, and self-hosted infrastructure — documented as I go, not polished after the fact. Based in Hyderabad, India.</p>
-    <a href="#journey" class="scroll-cue">See the journey <span aria-hidden="true">↓</span></a>
+    <!-- Replace "Your Name" with your real name -->
+    <p class="hero-byline">Your Name</p>
+    <h1>I take things apart to understand them. I'm still doing it.</h1>
+    <p class="hero-sub">Remote-control cars, cycles, phones, motors — and now embedded systems, 3D printing, and a server I run myself. This is a record of that, built as it happens, not polished after the fact. Based in Hyderabad, India.</p>
+    <a href="#journey" class="scroll-cue">See how it started <span aria-hidden="true">↓</span></a>
   </section>
 
   <section id="journey" class="section wrap reveal">
@@ -48,29 +59,58 @@
 
     <ol class="journey-list">
       <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — early Arduino / relay builds"></div>
+        <div class="media-placeholder" data-label="Photo — a remote-control car like the ones you took apart as a kid"></div>
         <h3>Where it started</h3>
-        <p>Arduino, HC-05 Bluetooth modules, relay-based home automation. Learned mostly by breaking things and working backward to figure out why.</p>
+        <p>At the yearly fairs in my hometown — Mahankaali Jaathara, Shivaratri Jaathara — the toy every kid wanted was a remote-control car. I'd get one, play with it for a few days, then take it apart with a sharpener blade and a pair of scissors, since I didn't own a screwdriver yet. I wanted to see the motor, the gears, the wiring underneath. Putting it back together didn't always go well. My parents eventually stopped buying me new ones, so I started saving pocket money to buy my own.</p>
       </li>
+
       <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — ESP32 / STM32 builds"></div>
-        <h3>Going deeper</h3>
-        <p>ESP32 BLE devices, RGB status systems, an STM32 dashboard simulated end to end. Started reading datasheets for fun, not just when something broke.</p>
+        <h3>The first real build</h3>
+        <p>In 7th grade, I wired my new cycle with a hidden light — the battery tucked inside the seat, wires hidden along the frame, wired so the light only came on when I braked. The brake pads doubled as the switch: two contacts, touching the wheel rim, closing the circuit.</p>
       </li>
+
       <li class="journey-item">
-        <div class="media-placeholder" data-label="Photo — server / workbench setup"></div>
-        <h3>Systems, not just circuits</h3>
-        <p>Set up a self-hosted server from scratch and built a multi-agent system on top of it. Some days the soldering iron stays off and it's all SSH.</p>
+        <div class="media-placeholder" data-label="Photo — a motor teardown or the copper-wire fix"></div>
+        <h3>Learning by breaking things</h3>
+        <p>A friend showed me how to spin an old motor fast enough to generate current — enough to light a small LED, rigged to my cycle wheel with whatever held it together. It worked, until the motor burned out from the speed. I opened it up, found the burned terminals, and replaced them with copper wire. It ran for a few more days after that. Around the same time, I wired a 12V LED straight into a wall socket, on the theory that voltage was voltage. It wasn't. I still remember that short circuit clearly — the first time I learned that electricity doesn't forgive guessing.</p>
+      </li>
+
+      <li class="journey-item">
+        <h3>Screens, then code</h3>
+        <p>When my phone's power button stopped working, I opened it with the same old blade — turned out the fix needed soldering, which I didn't have yet, so a repair shop finished the job. But taking it apart pulled me toward what was inside it in a different way: I started learning to code, edit photos and video, and run basic command-line tools on the phone itself. That was around 10th grade.</p>
+      </li>
+
+      <li class="journey-item">
+        <div class="media-placeholder" data-label="Photo — CAD work, machining, or the diploma workshop"></div>
+        <h3>A detour that wasn't wasted</h3>
+        <p>I got a mechanical engineering seat in college — not the computer science one I'd actually asked for. Three years in, I'd learned how gears and engines work, how to file and fit metal by hand, what a driveshaft and a universal joint actually do, and a little CAD. Old car-restoration shows kept me interested the whole way through. When the chance came to study computer science properly, I took it — but the mechanical years turned out to matter more than I expected at the time.</p>
+      </li>
+
+      <li class="journey-item">
+        <div class="media-placeholder" data-label="Photo — Arduino / ESP32 breadboard setup"></div>
+        <h3>Teaching myself the rest</h3>
+        <p>With a laptop of my own, I installed the Arduino IDE, bought a handful of microcontrollers, and learned mostly from YouTube — pasting code from video descriptions, running it, and slowly working out why it worked when it did and why it didn't when it didn't. ESP32 boards, LEDs, resistors, motor drivers. Around the same time, I fixed my own phone's battery, then a friend's, using nothing but tutorials and a soldering iron I'd bought myself.</p>
+      </li>
+
+      <li class="journey-item journey-item--highlight">
+        <p class="highlight-tag">Full circle</p>
+        <h3>The car, finished</h3>
+        <p class="highlight-text">At 20, I built the remote-control car I'd wanted to build since I was a kid — this time from scratch, driven from my own phone over Bluetooth. Same curiosity, fifteen years later, just with the skills to finish what I used to take apart.</p>
+        <div class="then-now">
+          <div class="media-placeholder media-placeholder--square" data-label="Then — a remote-control car like the ones you took apart"></div>
+          <span class="then-now-arrow" aria-hidden="true">→</span>
+          <div class="media-placeholder media-placeholder--square" data-label="Now — the Bluetooth car you built at 20"></div>
+        </div>
       </li>
     </ol>
   </section>
 
   <section id="now" class="section wrap reveal">
     <p class="eyebrow">Right now</p>
-    <h2>What I'm working on</h2>
+    <h2>What I'm doing at the moment</h2>
     <div class="now-card">
-      <p class="now-card-title">A self-hosted multi-agent system, running on my own server</p>
-      <p class="now-card-body">Six coordinated agent roles, tracked on a kanban board, still getting the rough edges sanded down. It's the current home for most of my debugging hours.</p>
+      <p class="now-card-title">A day job outside my field, and real work in the evenings</p>
+      <p class="now-card-body">A course toward an AI/ML role taught me a lot — the interview process taught me more, and not gently. About a year in, I stepped back. These days I work in documentation to cover rent, and the hours after that go to a self-hosted multi-agent AI system, 3D printing, resin casting, and a lamp I'm building to sell.</p>
     </div>
   </section>
 
@@ -81,23 +121,38 @@
 
     <div class="work-grid">
       <article class="work-card">
-        <div class="media-placeholder media-placeholder--wide" data-label="Photo — EV dashboard sim"></div>
-        <h3>EV dashboard + ADAS warning system</h3>
-        <p>STM32-based dashboard and driver-assist warning system, simulated end to end in PICSimLab.</p>
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — the finished RC car"></div>
+        <h3>The RC car, finished</h3>
+        <p>Built at 20, driven from my phone over Bluetooth — the car I always wanted to build the first time I took one apart.</p>
         <a href="#" class="work-link">View writeup ↗</a>
       </article>
 
       <article class="work-card">
-        <div class="media-placeholder media-placeholder--wide" data-label="Photo — server rack / terminal"></div>
-        <h3>Self-hosted AI infrastructure</h3>
-        <p>A personal VPS running a full multi-agent system, from bare metal to production, mesh-networked and monitored.</p>
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — home automation setup or app"></div>
+        <h3>Home automation that's still running</h3>
+        <p>ESP32 boards and Google Home controlling the lights and fan at home. Set up a while ago, still working, no maintenance drama.</p>
         <a href="#" class="work-link">View writeup ↗</a>
       </article>
 
       <article class="work-card">
-        <div class="media-placeholder media-placeholder--wide" data-label="Photo — 3D-printed idols"></div>
-        <h3>3D-printed dashboard idols</h3>
-        <p>Parametric OpenSCAD designs and heat-resistant materials research for a small-batch maker business.</p>
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — 3D-printed idols or resin pieces"></div>
+        <h3>3D printing and resin casting</h3>
+        <p>Printing idols and parts on my own printer, then picking up resin and silicone molding to get past the layer lines that plain 3D printing leaves behind.</p>
+        <a href="#" class="work-link">View writeup ↗</a>
+      </article>
+
+      <article class="work-card">
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — the lamp, in progress"></div>
+        <span class="tag">In progress</span>
+        <h3>A lamp, in progress</h3>
+        <p>Wood base, 3D-printed shade — my first real attempt at turning this into a small product business.</p>
+        <a href="#" class="work-link">View writeup ↗</a>
+      </article>
+
+      <article class="work-card">
+        <div class="media-placeholder media-placeholder--wide" data-label="Photo — the server or terminal"></div>
+        <h3>A self-hosted multi-agent AI system</h3>
+        <p>A personal server running six coordinated AI agent roles, tracked on a kanban board — still sanding down the rough edges.</p>
         <a href="#" class="work-link">View writeup ↗</a>
       </article>
     </div>
@@ -109,13 +164,13 @@
     <figure class="graph-figure">
       <svg viewBox="0 0 700 400" role="img" aria-labelledby="graphTitle graphDesc" class="node-graph">
         <title id="graphTitle">Skills and interests node graph</title>
-        <desc id="graphDesc">A central node, systems thinking, connects to four core areas: embedded systems, 3D printing and casting, AI agents, and self-hosted infrastructure. A fifth node, cloud infrastructure, connects with a dashed line, marking it as something being explored rather than a core skill.</desc>
+        <desc id="graphDesc">A central node, systems thinking, connects to four core areas: embedded systems, 3D printing and casting, AI agents and automation, and self-hosted infrastructure. A fifth node, small-batch product business, connects with a dashed line, marking it as something being explored rather than a core skill.</desc>
 
         <line x1="350" y1="120" x2="130" y2="65" class="trace"/>
-        <line x1="350" y1="120" x2="580" y2="65" class="trace"/>
+        <line x1="350" y1="120" x2="560" y2="65" class="trace"/>
         <line x1="350" y1="164" x2="145" y2="255" class="trace"/>
         <line x1="350" y1="164" x2="555" y2="255" class="trace"/>
-        <line x1="350" y1="164" x2="350" y2="300" class="trace trace--dashed"/>
+        <line x1="350" y1="164" x2="350" y2="298" class="trace trace--dashed"/>
 
         <g class="node node--core">
           <rect x="255" y="120" width="190" height="44" rx="6"/>
@@ -127,12 +182,12 @@
           <text x="130" y="65" text-anchor="middle" dominant-baseline="central">Embedded systems</text>
         </g>
         <g class="node">
-          <rect x="505" y="45" width="150" height="40" rx="6"/>
-          <text x="580" y="65" text-anchor="middle" dominant-baseline="central">3D printing &amp; casting</text>
+          <rect x="465" y="45" width="190" height="40" rx="6"/>
+          <text x="560" y="65" text-anchor="middle" dominant-baseline="central">3D printing &amp; casting</text>
         </g>
         <g class="node">
-          <rect x="45" y="235" width="200" height="40" rx="6"/>
-          <text x="145" y="255" text-anchor="middle" dominant-baseline="central">AI agents</text>
+          <rect x="35" y="235" width="220" height="40" rx="6"/>
+          <text x="145" y="255" text-anchor="middle" dominant-baseline="central">AI agents &amp; automation</text>
         </g>
         <g class="node">
           <rect x="455" y="235" width="200" height="40" rx="6"/>
@@ -140,8 +195,8 @@
         </g>
 
         <g class="node node--exploring">
-          <rect x="270" y="300" width="160" height="36" rx="6" stroke-dasharray="3 3"/>
-          <text x="350" y="318" text-anchor="middle" dominant-baseline="central">Cloud infra — new</text>
+          <rect x="210" y="298" width="280" height="38" rx="6" stroke-dasharray="3 3"/>
+          <text x="350" y="317" text-anchor="middle" dominant-baseline="central">Small-batch product business — new</text>
         </g>
 
         <g class="legend">
@@ -157,12 +212,12 @@
   <section id="direction" class="section wrap reveal">
     <p class="eyebrow">Where I'm headed</p>
     <h2>What I'm looking for</h2>
-    <p class="direction-text">Roles where hardware and software meet — embedded systems, robotics, or applied AI. Somewhere I can keep building real things, not just diagramming them.</p>
+    <p class="direction-text">Work where hardware and software meet — embedded systems, firmware, robotics, or applied AI. Something that ends in a thing that works, not a diagram of one.</p>
   </section>
 
   <section id="scope" class="section wrap reveal">
-    <p class="eyebrow">What I'm not doing yet</p>
-    <p class="scope-text">Not chasing cloud-scale backend work or deep ML research right now. Staying focused on hardware-software integration until that's solid — everything else is deliberately parked.</p>
+    <p class="eyebrow">Where I'm honest about the gap</p>
+    <p class="scope-text">I haven't shipped anything at production scale yet, and I'm not chasing deep ML research or pure backend work right now. The focus is hardware-software integration — getting that solid before spreading wider.</p>
   </section>
 
   <section id="contact" class="section wrap reveal contact">
@@ -178,8 +233,9 @@
 
 </main>
 
+<!-- Replace "Your Name" below with your real name -->
 <footer class="footer wrap">
-  <p>Built and self-hosted by Mike.</p>
+  <p>Built and self-hosted by Your Name.</p>
 </footer>
 
 <script src="script.js"></script>

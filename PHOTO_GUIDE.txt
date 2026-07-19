@@ -1,0 +1,39 @@
+PHOTO GUIDE
+===========
+Put your image files in this folder, then swap the matching <div class="media-placeholder" ...>
+in index.html for <img src="assets/filename.jpg" alt="...">.
+
+JOURNEY SECTION (aspect ratio 4:3, except the "Then / Now" pair below which is 1:1)
+- A remote-control car — even a current photo of the same kind of toy car works if you
+  don't have one from childhood. This just needs to be recognizable, not literal.
+- The motor teardown or the copper-wire fix — a close-up shot works well here, it doesn't
+  need to be the original motor.
+- CAD work, machining, or your diploma workshop — a screenshot of a CAD file, or a photo
+  from the workshop/lab, either is fine.
+- Your Arduino / ESP32 breadboard setup — any photo of a board mid-project works.
+
+FULL CIRCLE MOMENT (two square 1:1 photos, shown side by side)
+- "Then" — a remote-control toy car like the ones you took apart as a kid.
+- "Now" — the Bluetooth-controlled car you built at 20.
+This pair is the one moment on the page designed to be memorable — it's worth taking a
+bit more care with these two photos than the others. Similar framing/angle between the
+two photos will make the "then vs now" read instantly.
+
+WORK SECTION (aspect ratio 16:10, wide)
+- The finished RC car.
+- Your home automation setup — the ESP32 wiring, or a screenshot of the Google Home app
+  controlling it.
+- 3D-printed idols or resin pieces.
+- The lamp, in progress — doesn't need to be finished, "in progress" is the point.
+- The server or a terminal screen from the multi-agent system.
+
+OG COVER IMAGE
+- assets/og-cover.jpg — 1200x630px. This is what shows up as the preview image when
+  someone shares your link on LinkedIn, WhatsApp, etc. A clean photo of one of your
+  builds, or even a simple text-on-color card with your name, works well here.
+
+General tips:
+- Consistent lighting/background across photos makes the page feel curated rather than
+  a random dump of images — doesn't need to be a studio, just consistent.
+- If you don't have a photo for a given spot yet, it's fine to leave the placeholder box
+  in place for now — it won't break anything, it'll just show the dashed outline and label.
