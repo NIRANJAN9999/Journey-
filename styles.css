@@ -1,15 +1,16 @@
+cat > /home/claude/site/styles.css << 'CSSEOF'
 :root {
-  --bg: #FFFFFF;
-  --bg-elevated: #F5F4F0;
-  --bg-elevated-2: #ECE9E2;
-  --text: #1B1B18;
-  --text-secondary: #56534B;
-  --text-muted: #928D82;
-  --accent: #2F5C4D;
-  --accent-soft: #7FA396;
-  --accent-wash: #EAF1EE;
-  --border: rgba(27, 27, 24, 0.10);
-  --border-strong: rgba(27, 27, 24, 0.20);
+  --bg: #F2ECDF;
+  --bg-elevated: #FBF8F1;
+  --bg-elevated-2: #EFE6D2;
+  --accent-wash: #E9EEE2;
+  --text: #221E18;
+  --text-secondary: #5B5442;
+  --text-muted: #948C77;
+  --accent: #33523F;
+  --accent-soft: #86A78F;
+  --border: rgba(34, 30, 24, 0.12);
+  --border-strong: rgba(34, 30, 24, 0.22);
   --radius: 6px;
   --font-display: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
   --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -81,7 +82,7 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(242, 236, 223, 0.88);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }
@@ -94,7 +95,12 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
 }
 
 .nav-mark { display: flex; align-items: center; }
-.nav-mark-icon circle { fill: var(--accent); }
+.nav-mark-icon circle {
+  fill: var(--accent);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: ledPulse 3.2s ease-in-out infinite;
+}
 .nav-mark-icon line { stroke: var(--accent); stroke-width: 2; }
 
 .nav-links {
@@ -115,16 +121,43 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
 
 /* hero */
 .hero {
-  padding: 108px 24px 84px;
+  position: relative;
+  overflow: hidden;
 }
 
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 116px 24px 92px;
+}
+
+.hero-gear {
+  position: absolute;
+  top: -70px;
+  right: -110px;
+  width: 460px;
+  height: 460px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-gear .gear-group {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: gearSpin 100s linear infinite;
+}
+
+.hero-gear circle { fill: none; stroke: var(--text); }
+.hero-gear rect { fill: var(--text); }
+
 .hero-byline {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 22px;
+  font-family: var(--font-display);
+  font-size: 1.32rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
 }
 
 .hero h1 {
@@ -150,12 +183,18 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
 }
 
 /* sections */
-.section { padding: 76px 24px; border-top: 1px solid var(--border); }
+.section { padding: 84px 24px; border-top: 1px solid var(--border); }
 .section-note { font-size: 0.9rem; margin-top: -20px; margin-bottom: 32px; color: var(--text-muted); }
 
 @media (prefers-reduced-motion: no-preference) {
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.in-view { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gear .gear-group { animation: none; }
+  .nav-mark-icon circle { animation: none; }
+  .journey-item::after { animation: none; }
 }
 
 /* media placeholder */
@@ -189,7 +228,7 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
 .journey-item {
   position: relative;
   padding-left: 44px;
-  margin-bottom: 52px;
+  margin-bottom: 58px;
 }
 
 .journey-item:last-child { margin-bottom: 0; }
@@ -197,27 +236,67 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
 .journey-item::before {
   content: '';
   position: absolute;
-  left: 2px;
+  left: 1px;
   top: 4px;
   width: 13px;
   height: 13px;
   border-radius: 50%;
   border: 2px solid var(--accent);
   background: var(--bg);
+  box-shadow: 0 0 0 3px rgba(51, 82, 63, 0.10), 0 0 7px rgba(51, 82, 63, 0.30);
   z-index: 2;
 }
 
 .journey-item::after {
   content: '';
   position: absolute;
-  left: 7.5px;
+  left: 6.5px;
   top: 21px;
-  bottom: -52px;
-  width: 1.5px;
-  background: var(--border-strong);
+  bottom: -58px;
+  width: 2px;
+  background-color: var(--border-strong);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 30px,
+    var(--accent) 36px,
+    transparent 42px,
+    transparent 72px
+  );
+  animation: currentFlow 3.4s linear infinite;
 }
 
 .journey-item:last-child::after { display: none; }
+
+/* code snippet */
+.code-snippet {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin: 18px 0 4px;
+  overflow-x: auto;
+}
+
+.code-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+  letter-spacing: 0.02em;
+}
+
+.code-snippet pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.code-snippet code { color: inherit; }
+.code-fn { color: var(--accent); }
 
 /* full-circle signature moment */
 .journey-item--highlight {
@@ -258,7 +337,7 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
   flex: 1;
   margin-bottom: 0;
   aspect-ratio: 1 / 1;
-  background: #fff;
+  background: var(--bg-elevated);
 }
 
 .then-now-arrow {
@@ -408,11 +487,29 @@ p { color: var(--text-secondary); margin: 0 0 12px; }
   color: var(--text-muted);
 }
 
+@keyframes gearSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes currentFlow {
+  from { background-position-y: 0; }
+  to { background-position-y: 72px; }
+}
+
 @media (max-width: 600px) {
-  .hero { padding: 84px 24px 60px; }
-  .section { padding: 56px 24px; }
+  .hero-inner { padding: 88px 24px 64px; }
+  .hero-gear { width: 300px; height: 300px; top: -50px; right: -90px; opacity: 0.045; }
+  .section { padding: 60px 24px; }
   .nav-links { gap: 14px; }
   .journey-item--highlight { margin-left: 0; margin-right: 0; padding: 22px 20px 24px; }
   .then-now { flex-direction: column; }
   .then-now-arrow { transform: rotate(90deg); }
 }
+CSSEOF
+echo "styles.css written"
