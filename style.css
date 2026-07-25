@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom scrollbar to fit the hardware aesthetic */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1c1b1a; 
+}
+::-webkit-scrollbar-thumb {
+    background: #6b5b82; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #c26b4d; 
+}
+
+/* RGB LED Cycle Animation for ESP32 card */
+@keyframes rgb-cycle {
+    0%, 100% { color: #ff0000; background-color: #ff0000; }
+    33% { color: #00ff00; background-color: #00ff00; }
+    66% { color: #0000ff; background-color: #0000ff; }
+}
+.rgb-cycle {
+    animation: rgb-cycle 4s infinite;
+}
