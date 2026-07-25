@@ -1,28 +1,35 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #050505;
 }
 
-/* Custom scrollbar to fit the hardware aesthetic */
+/* Hide scrollbar for a cinematic feel (Lenis handles scrolling) */
 ::-webkit-scrollbar {
-    width: 8px;
+    display: none;
 }
-::-webkit-scrollbar-track {
-    background: #1c1b1a; 
-}
-::-webkit-scrollbar-thumb {
-    background: #6b5b82; 
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #c26b4d; 
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* RGB LED Cycle Animation for ESP32 card */
-@keyframes rgb-cycle {
-    0%, 100% { color: #ff0000; background-color: #ff0000; }
-    33% { color: #00ff00; background-color: #00ff00; }
-    66% { color: #0000ff; background-color: #0000ff; }
+/* Glassmorphism utility for premium cards */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
-.rgb-cycle {
-    animation: rgb-cycle 4s infinite;
+
+/* Infinite Conveyor Belt Animation for Section 3 */
+@keyframes conveyor-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+#conveyor {
+    animation: conveyor-move 10s linear infinite;
+    /* Add gradient masks so it fades out at the edges of the screen */
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
