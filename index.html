@@ -1,244 +1,534 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-black text-white antialiased">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Journey | Builder & Engineer</title>
+    <title>The Long Way Around</title>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        electric: '#00f0ff',
-                        warm: '#ff4500',
-                        emerald: '#00ff66',
-                        dark: '#050505'
+                        charcoal: '#1c1b1a',     /* Oscilloscope warm background */
+                        offwhite: '#e6e1d8',     /* Body text */
+                        copper: '#c26b4d',       /* Copper trace & heat accent */
+                        violet: '#6b5b82',       /* PCB purple secondary accent */
+                        led: '#00ff41'           /* Phosphor green status LED */
                     },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                    fontFamily: {
+                        sans: ['"Work Sans"', 'sans-serif'],
+                        display: ['"Big Shoulders Display"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
                 }
             }
         }
     </script>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #1c1b1a;
+            color: #e6e1d8;
+        }
+
+        /* Hide default scrollbar for clean Lenis physics */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Stroboscopic flash effect for Act II */
+        .shock-flash {
+            transition: color 0.1s ease, text-shadow 0.1s ease;
+        }
+        .shock-flash:hover {
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(194, 107, 77, 0.8);
+        }
+    </style>
 </head>
-<body class="overflow-x-hidden selection:bg-electric selection:text-black">
+<body class="bg-charcoal text-offwhite font-sans antialiased selection:bg-copper selection:text-charcoal overflow-x-hidden">
 
-    <!-- Global 3D Background Canvas -->
-    <canvas id="webgl-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+    <!-- Signature PCB Copper Trace Navigation -->
+    <nav className="fixed left-3 md:left-10 top-0 bottom-0 w-8 z-50 flex flex-col items-center py-16 pointer-events-none" style="position: fixed; left: 1rem; top: 0; bottom: 0; width: 2rem; z-index: 50; pointer-events: none;">
+        <!-- Base Unfilled Trace -->
+        <div class="absolute top-16 bottom-16 w-[2px] bg-violet/30 left-1/2 -translate-x-1/2">
+            <!-- Active Copper Fill Line -->
+            <div id="trace-fill" class="w-full bg-copper h-0 origin-top shadow-[0_0_8px_rgba(194,107,77,0.6)]"></div>
+        </div>
 
-    <!-- Scroll Progress Line -->
-    <div class="fixed left-0 top-0 w-1 h-full bg-white/10 z-50">
-        <div id="scroll-progress" class="w-full bg-gradient-to-b from-electric to-emerald h-0 shadow-[0_0_10px_#00f0ff]"></div>
-    </div>
+        <!-- Solder Joints / Chapter Nodes -->
+        <div class="absolute top-16 bottom-16 left-0 w-full flex flex-col justify-between items-center pointer-events-auto">
+            <a href="#act-1" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">I</span>
+            </a>
+            <a href="#act-2" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">II</span>
+            </a>
+            <a href="#act-3" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">III</span>
+            </a>
+            <a href="#act-4" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">IV</span>
+            </a>
+            <a href="#act-5" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">V</span>
+            </a>
+            <a href="#act-6" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">VI</span>
+            </a>
+            <a href="#act-7" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">VII</span>
+            </a>
+            <a href="#act-8" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">VIII</span>
+            </a>
+            <a href="#act-9" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">IX</span>
+            </a>
+            <a href="#the-work" class="group relative w-6 h-6 flex items-center justify-center focus:outline-none">
+                <div class="w-2 h-2 rounded-full bg-charcoal border-2 border-violet group-hover:border-copper transition-colors z-10"></div>
+                <span class="absolute left-7 font-mono text-[10px] text-violet group-hover:text-copper opacity-0 group-hover:opacity-100 transition-opacity">WORK</span>
+            </a>
+        </div>
+    </nav>
 
-    <!-- Main Cinematic Scroll Container -->
-    <main id="smooth-wrapper" class="relative z-10 w-full flex flex-col">
-        
-        <!-- SECTION 1: INTRO -->
-        <section id="sec-intro" class="min-h-screen flex flex-col items-center justify-center relative">
-            <div class="hero-text text-center z-10 opacity-0 transform translate-y-10">
-                <h1 class="text-6xl md:text-9xl font-extrabold tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">MIKE</h1>
-                <div class="h-12 overflow-hidden mb-6 relative">
-                    <div id="word-cycler" class="text-2xl md:text-3xl font-light text-electric flex flex-col transition-transform duration-500">
-                        <span>Builder.</span>
-                        <span>Engineer.</span>
-                        <span>Problem Solver.</span>
-                        <span>Creator.</span>
-                    </div>
-                </div>
-                <p class="text-lg md:text-xl text-gray-400 font-light max-w-lg mx-auto">"A journey driven by curiosity, not credentials."</p>
+    <!-- Main Narrative Stream -->
+    <main class="pl-12 md:pl-32 pr-6 md:pr-12 max-w-4xl mx-auto w-full">
+
+        <!-- ACT I — THE FAIR -->
+        <section id="act-1" class="min-h-screen py-24 flex flex-col justify-center">
+            <!-- Header -->
+            <div class="flex items-center gap-4 mb-16">
+                <h1 class="font-display text-5xl md:text-8xl uppercase tracking-tight text-offwhite m-0">The Long Way Around</h1>
+                <div class="w-3.5 h-3.5 rounded-full bg-led shadow-[0_0_12px_rgba(0,255,65,0.7)] animate-pulse mt-2" title="System Active"></div>
             </div>
-            <div class="absolute bottom-10 animate-bounce text-gray-500 text-sm tracking-widest uppercase">Scroll to Explore</div>
+
+            <!-- Staging Graphic: Line-drawn toy car -->
+            <div class="w-full h-40 border border-violet/20 bg-black/20 rounded-lg flex items-center justify-center mb-16 relative overflow-hidden">
+                <div class="font-mono text-xs text-violet/60 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-copper rounded-full animate-ping"></span>
+                    [ILLUSTRATION: Line-drawn RC car opens, exposing sharpener-blade & motor]
+                </div>
+            </div>
+
+            <div class="space-y-8 text-lg md:text-xl leading-relaxed">
+                <p class="story-line">It started at the yearly fairs back home—Mahankaali Jaathara, Shivaratri Jaathara.</p>
+                <p class="story-line">Like most kids around me, the highlight wasn't the rides or the food.</p>
+                <p class="story-line">It was convincing my parents to buy me a remote control car before we went home.</p>
+                <p class="story-line text-copper font-medium mt-12">The interesting part always began after the excitement wore off.</p>
+                <p class="story-line">Within a few days I'd be sitting on the floor with a sharpener blade, a pair of scissors, and a pile of tiny screws because I wanted to know what was inside it.</p>
+                <p class="story-line">I didn't own a screwdriver.</p>
+                <p class="story-line text-copper">The sharpener blade became one.</p>
+                <p class="story-line mt-12">Sometimes I'd manage to put everything back together exactly as it was.</p>
+                <p class="story-line">Sometimes I wouldn't.</p>
+                <p class="story-line">A few cars never worked again, which usually ended with my parents asking why I couldn't leave anything alone.</p>
+                <p class="story-line mt-12">Eventually they stopped buying me remote control cars.</p>
+                <p class="story-line">So I started saving my own pocket money and buying them myself.</p>
+                <p class="story-line">Those got opened too.</p>
+            </div>
         </section>
 
-        <!-- SECTION 2: WHERE IT STARTED -->
-        <section id="sec-timeline" class="min-h-screen py-32 px-8 md:px-32 relative">
-            <h2 class="text-4xl md:text-6xl font-bold mb-24 text-warm section-title opacity-0">Where It Started</h2>
-            <div class="relative border-l border-warm/30 pl-8 ml-4 md:ml-0 space-y-32">
+        <!-- ACT II — GETTING SHOCKED BY THE UNIVERSE -->
+        <section id="act-2" class="min-h-screen py-32 border-t border-violet/10">
+            <div class="space-y-8 text-lg md:text-xl font-medium">
+                <p class="story-line">By the time I was in seventh grade, I had a bicycle and another idea.</p>
+                <p class="story-line text-copper">I wanted a brake light.</p>
+                <p class="story-line shock-flash">Not because anyone else had one—I just thought it should.</p>
+                <p class="story-line">I hid a battery under the seat so nobody could steal it, routed the wires so they weren't visible, and used the brake pads themselves as a switch.</p>
+                <p class="story-line">When I pressed the brake, the circuit closed and the light turned on.</p>
+                <p class="story-line">It wasn't pretty.</p>
+                <p class="story-line text-copper">But it worked.</p>
                 
-                <div class="milestone opacity-0 relative group cursor-pointer">
-                    <div class="absolute -left-[41px] top-2 w-5 h-5 rounded-full bg-black border-2 border-warm group-hover:bg-warm transition-colors shadow-[0_0_15px_#ff4500]"></div>
-                    <h3 class="text-3xl font-bold mb-4 group-hover:text-warm transition-colors">Growing Curiosity</h3>
-                    <div class="glass-panel p-6 max-w-2xl transform transition-transform group-hover:scale-[1.02]">
-                        <p class="text-gray-400 mb-4">Taking things apart to see how they work. The foundation of everything.</p>
-                        <div class="w-full h-48 bg-white/5 border border-white/10 rounded flex items-center justify-center text-sm text-gray-500">
-                            [IMAGE PLACEHOLDER: Old Photos / Early Projects]
-                        </div>
-                    </div>
-                </div>
+                <p class="story-line mt-16">Around the same time, an older man mentioned dynamos—those small generators older bicycles used to have.</p>
+                <p class="story-line">I'd never seen one.</p>
+                <p class="story-line">There wasn't a shop nearby where I could even look at one.</p>
+                <p class="story-line mt-8">A friend showed me something close enough.</p>
+                <p class="story-line">He spun a tiny toy motor with his fingers and connected an LED to it. The LED lit up.</p>
+                <p class="story-line shock-flash text-copper">That was enough.</p>
+                <p class="story-line">We attached the motor to my bicycle wheel with whatever we could find and watched the LED glow while riding.</p>
+                <p class="story-line">Eventually I spun it too fast and burned the motor.</p>
+                <p class="story-line">I opened it, replaced the damaged winding with copper wire, and got it running again for a while.</p>
+                <p class="story-line">Not because I knew what I was doing.</p>
+                <p class="story-line text-copper">Because I wanted to see if it would work.</p>
 
-                <div class="milestone opacity-0 relative group cursor-pointer">
-                    <div class="absolute -left-[41px] top-2 w-5 h-5 rounded-full bg-black border-2 border-warm group-hover:bg-warm transition-colors shadow-[0_0_15px_#ff4500]"></div>
-                    <h3 class="text-3xl font-bold mb-4 group-hover:text-warm transition-colors">Mechanical Engineering & Electronics</h3>
-                    <div class="glass-panel p-6 max-w-2xl transform transition-transform group-hover:scale-[1.02]">
-                        <p class="text-gray-400 mb-4">Bridging the physical and electrical. Installing CCTV systems and working on real industrial projects.</p>
-                        <div class="w-full h-48 bg-white/5 border border-white/10 rounded flex items-center justify-center text-sm text-gray-500">
-                            [IMAGE PLACEHOLDER: Industrial Work / Tools]
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 3: THE LOOP -->
-        <section id="sec-loop" class="min-h-screen flex items-center justify-center relative overflow-hidden py-32">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black to-transparent z-10"></div>
-            
-            <div id="conveyor" class="absolute w-[150vw] h-[1px] bg-white/20 top-1/2 -translate-y-1/2 rotate-12 flex items-center justify-between px-20">
-                <div class="w-16 h-16 border border-gray-600 rounded flex items-center justify-center text-xs text-gray-600">File</div>
-                <div class="w-16 h-16 border border-gray-600 rounded flex items-center justify-center text-xs text-gray-600">Clock</div>
-                <div class="w-16 h-16 border border-gray-600 rounded flex items-center justify-center text-xs text-gray-600">Desk</div>
-                <!-- Repeats via CSS -->
-            </div>
-
-            <div class="z-20 text-center max-w-3xl px-8 loop-text opacity-0">
-                <h2 class="text-3xl md:text-5xl font-light leading-tight mb-8">
-                    "I realized I wasn't afraid of hard work.<br>
-                    <span class="text-gray-500">I was afraid of never building something of my own.</span>"
-                </h2>
-            </div>
-        </section>
-
-        <!-- SECTION 4: BREAKING THE PATTERN -->
-        <section id="sec-break" class="min-h-screen flex flex-col items-center justify-center relative py-32">
-            <h2 class="text-5xl md:text-7xl font-bold mb-20 text-electric opacity-0 break-title">Breaking the Pattern</h2>
-            <div class="flex flex-wrap justify-center gap-6 max-w-5xl px-8 tech-nodes">
-                <!-- Javascript will populate these to float dynamically -->
-                <div class="tech-node glass-panel px-6 py-3 rounded-full text-lg hover:text-electric hover:border-electric cursor-pointer transition-all">Arduino</div>
-                <div class="tech-node glass-panel px-6 py-3 rounded-full text-lg hover:text-electric hover:border-electric cursor-pointer transition-all">ESP32</div>
-                <div class="tech-node glass-panel px-6 py-3 rounded-full text-lg hover:text-electric hover:border-electric cursor-pointer transition-all">AI & Python</div>
-                <div class="tech-node glass-panel px-6 py-3 rounded-full text-lg hover:text-electric hover:border-electric cursor-pointer transition-all">Embedded Systems</div>
-                <div class="tech-node glass-panel px-6 py-3 rounded-full text-lg hover:text-electric hover:border-electric cursor-pointer transition-all">Computer Vision</div>
-                <div class="tech-node glass-panel px-6 py-3 rounded-full text-lg hover:text-electric hover:border-electric cursor-pointer transition-all">3D Printing</div>
-                <div class="tech-node glass-panel px-6 py-3 rounded-full text-lg hover:text-electric hover:border-electric cursor-pointer transition-all">IoT</div>
-            </div>
-        </section>
-
-        <!-- SECTION 5: THE WORKSHOP -->
-        <section id="sec-workshop" class="min-h-screen py-32 px-8 md:px-20 relative">
-            <h2 class="text-4xl md:text-6xl font-bold mb-16 text-emerald opacity-0 section-title">The Workshop</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 3D Printer Interactive Card -->
-                <div class="workshop-item glass-panel p-8 rounded-xl cursor-pointer group hover:-translate-y-2 transition-transform">
-                    <div class="w-full h-40 bg-black/50 border border-emerald/30 rounded mb-6 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,102,0.1)] group-hover:shadow-[0_0_25px_rgba(0,255,102,0.3)] transition-shadow">
-                         [IMAGE PLACEHOLDER: 3D Printer / Renders]
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 text-emerald">3D Printing & Design</h3>
-                    <p class="text-gray-400 text-sm mb-4">Murugan symbol, Ganesh idols, Dattatreya, Paint processes.</p>
-                    <div class="h-0 overflow-hidden group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <button class="w-full py-2 bg-emerald/10 text-emerald rounded border border-emerald/30 mt-4">Open Gallery</button>
-                    </div>
-                </div>
-
-                <!-- Arduino/Embedded Card -->
-                <div class="workshop-item glass-panel p-8 rounded-xl cursor-pointer group hover:-translate-y-2 transition-transform">
-                    <div class="w-full h-40 bg-black/50 border border-electric/30 rounded mb-6 flex items-center justify-center shadow-[0_0_15px_rgba(0,240,255,0.1)] group-hover:shadow-[0_0_25px_rgba(0,240,255,0.3)] transition-shadow relative overflow-hidden">
-                         <div class="absolute w-2 h-2 bg-electric rounded-full top-4 right-4 animate-ping"></div>
-                         [IMAGE PLACEHOLDER: ESP32 / Breadboards]
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 text-electric">Hardware & Automation</h3>
-                    <p class="text-gray-400 text-sm mb-4">Robotics, embedded systems, custom circuitry.</p>
-                    <div class="h-0 overflow-hidden group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <button class="w-full py-2 bg-electric/10 text-electric rounded border border-electric/30 mt-4">Open Projects</button>
-                    </div>
-                </div>
-
-                <!-- Laptop/Code Card -->
-                <div class="workshop-item glass-panel p-8 rounded-xl cursor-pointer group hover:-translate-y-2 transition-transform">
-                    <div class="w-full h-40 bg-black/50 border border-warm/30 rounded mb-6 flex items-center justify-center shadow-[0_0_15px_rgba(255,69,0,0.1)] group-hover:shadow-[0_0_25px_rgba(255,69,0,0.3)] transition-shadow">
-                         <div class="text-warm/50 font-mono text-xs text-left w-full pl-4 mt-4 opacity-50">>> run automation.py<br>>> loading AI models...</div>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 text-warm">Software & AI</h3>
-                    <p class="text-gray-400 text-sm mb-4">Computer vision, Python scripts, machine learning.</p>
-                    <div class="h-0 overflow-hidden group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <button class="w-full py-2 bg-warm/10 text-warm rounded border border-warm/30 mt-4">View Scripts</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 7: THE BUSINESS -->
-        <section id="sec-business" class="min-h-screen py-32 px-8 md:px-20 relative">
-            <h2 class="text-4xl md:text-6xl font-bold mb-16 text-white text-center opacity-0 section-title">The Business</h2>
-            <!-- Business Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-                <div class="business-card glass-panel aspect-square flex flex-col items-center justify-center p-4 hover:border-white/50 cursor-pointer transition-colors group">
-                    <div class="w-full h-3/4 mb-2 bg-white/5 rounded flex items-center justify-center text-xs text-gray-500">
-                        [IMAGE: Murugan Vel]
-                    </div>
-                    <span class="text-sm font-semibold group-hover:text-electric transition-colors">Murugan Vel</span>
-                </div>
-                <div class="business-card glass-panel aspect-square flex flex-col items-center justify-center p-4 hover:border-white/50 cursor-pointer transition-colors group">
-                    <div class="w-full h-3/4 mb-2 bg-white/5 rounded flex items-center justify-center text-xs text-gray-500">
-                        [IMAGE: Minimal Decor]
-                    </div>
-                    <span class="text-sm font-semibold group-hover:text-warm transition-colors">Minimal Decor</span>
-                </div>
-                <div class="business-card glass-panel aspect-square flex flex-col items-center justify-center p-4 hover:border-white/50 cursor-pointer transition-colors group">
-                    <div class="w-full h-3/4 mb-2 bg-white/5 rounded flex items-center justify-center text-xs text-gray-500">
-                        [IMAGE: Packaging]
-                    </div>
-                    <span class="text-sm font-semibold group-hover:text-emerald transition-colors">Packaging</span>
-                </div>
-                <div class="business-card glass-panel aspect-square flex flex-col items-center justify-center p-4 hover:border-white/50 cursor-pointer transition-colors group">
-                    <div class="w-full h-3/4 mb-2 bg-white/5 rounded flex items-center justify-center text-xs text-gray-500">
-                        [IMAGE: Amazon Listing]
-                    </div>
-                    <span class="text-sm font-semibold group-hover:text-white transition-colors">Amazon Listings</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 11: FINAL (STILL BUILDING) & CONTACT -->
-        <section id="sec-final" class="min-h-screen py-32 px-8 flex flex-col items-center justify-center relative">
-            <h2 class="text-6xl md:text-9xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-white opacity-0 section-title">STILL BUILDING.</h2>
-            
-            <!-- Holographic Terminal -->
-            <div class="hologram-terminal mt-16 glass-panel p-8 rounded-2xl w-full max-w-2xl border border-electric/30 shadow-[0_0_40px_rgba(0,240,255,0.1)] backdrop-blur-xl relative overflow-hidden group">
-                <div class="absolute inset-0 bg-gradient-to-b from-electric/5 to-transparent pointer-events-none"></div>
+                <p class="story-line mt-16">Not every experiment was a good one.</p>
+                <p class="story-line">We noticed colorful LED strips hanging underneath trucks and larger vehicles.</p>
+                <p class="story-line">A few of them somehow ended up in our hands.</p>
+                <p class="story-line">We tried powering them with batteries we had at home.</p>
+                <p class="story-line text-violet">Nothing.</p>
+                <p class="story-line">Much later we learned they needed 12 volts.</p>
                 
-                <div class="flex items-center gap-2 mb-8 border-b border-white/10 pb-4">
-                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                    <span class="ml-4 font-mono text-sm text-electric/70">comm_link_established</span>
+                <p class="story-line mt-12 text-copper font-bold">Around that time I also connected a 12V LED directly into a wall socket.</p>
+                <p class="story-line font-bold">It exploded almost instantly.</p>
+                <p class="story-line text-xl md:text-2xl mt-8 text-offwhite font-bold">Nobody teaches you electricity like electricity does.</p>
+            </div>
+        </section>
+
+        <!-- ACT III — THE PHONE -->
+        <section id="act-3" class="min-h-screen py-32 border-t border-violet/10">
+            <div class="space-y-8 text-lg md:text-xl">
+                <p class="story-line">My first phone came later.</p>
+                <p class="story-line">Eventually the power button stopped working.</p>
+                <p class="story-line">Naturally, I opened that too.</p>
+                <p class="story-line">This time I reached a point where I couldn't go any further.</p>
+                <p class="story-line text-copper">It needed soldering.</p>
+                <p class="story-line">I didn't own a soldering iron.</p>
+                <p class="story-line">A repair shop fixed it.</p>
+                <p class="story-line">I left thinking less about the phone and more about learning how to solder.</p>
+
+                <!-- Termux / Search History Log -->
+                <div class="my-16 p-6 border border-violet/20 bg-black/40 rounded font-mono text-sm space-y-3 text-violet">
+                    <p class="text-offwhite/50">// That same phone quietly changed what I spent my time on:</p>
+                    <p class="story-line text-copper">> Photo editing.</p>
+                    <p class="story-line text-copper">> Video editing.</p>
+                    <p class="story-line text-copper">> Android customization.</p>
+                    <p class="story-line text-copper">> Termux.</p>
+                    <p class="story-line text-copper">> Linux commands.</p>
+                    <p class="story-line text-copper">> Random programming tutorials.</p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <a href="#" class="flex items-center justify-center py-4 bg-white/5 hover:bg-electric/20 hover:border-electric transition-all border border-white/10 rounded text-lg font-mono text-gray-300 hover:text-electric shadow-[0_0_0_rgba(0,240,255,0)] hover:shadow-[0_0_15px_rgba(0,240,255,0.4)]">
-                        [ GITHUB ]
-                    </a>
-                    <a href="#" class="flex items-center justify-center py-4 bg-white/5 hover:bg-warm/20 hover:border-warm transition-all border border-white/10 rounded text-lg font-mono text-gray-300 hover:text-warm shadow-[0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_15px_rgba(255,69,0,0.4)]">
-                        [ LINKEDIN ]
-                    </a>
-                    <a href="#" class="flex items-center justify-center py-4 bg-white/5 hover:bg-emerald/20 hover:border-emerald transition-all border border-white/10 rounded text-lg font-mono text-gray-300 hover:text-emerald shadow-[0_0_0_rgba(0,255,102,0)] hover:shadow-[0_0_15px_rgba(0,255,102,0.4)]">
-                        [ EMAIL ]
-                    </a>
-                    <a href="#" class="flex items-center justify-center py-4 bg-white/5 hover:bg-white/20 hover:border-white transition-all border border-white/10 rounded text-lg font-mono text-gray-300 hover:text-white shadow-[0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]">
-                        [ RESUME ]
-                    </a>
+                <p class="story-line">Things I didn't fully understand but kept trying anyway.</p>
+                <p class="story-line">Nobody around me was particularly interested in those things, so YouTube slowly became the teacher I kept coming back to.</p>
+            </div>
+        </section>
+
+        <!-- ACT IV — TWO DEGREES -->
+        <section id="act-4" class="min-h-screen py-32 border-t border-violet/10 relative">
+            <div class="space-y-8 text-lg md:text-xl">
+                <p class="story-line">When it was time for college, I ended up studying Mechanical Engineering.</p>
+                <p class="story-line">It wasn't part of some carefully planned career path.</p>
+                <p class="story-line">It was simply the opportunity in front of me.</p>
+                <p class="story-line">Looking back, I'm glad it happened.</p>
+                
+                <div class="my-12 pl-6 border-l-2 border-violet/40 space-y-4">
+                    <p class="story-line">For the first time I learned why gears had different profiles.</p>
+                    <p class="story-line">Why shafts failed.</p>
+                    <p class="story-line">How bearings worked.</p>
+                    <p class="story-line">How to file metal flat.</p>
+                    <p class="story-line">How to think about tolerances.</p>
+                </div>
+
+                <p class="story-line">I learned basic CAD and spent time around machines instead of only looking at them.</p>
+                <p class="story-line">Outside class I watched restoration videos and old automotive shows that somehow made mechanical engineering more interesting than the syllabus ever did.</p>
+                
+                <p class="story-line mt-16 text-copper font-medium">Later I had the chance to continue into Computer Science, so I took it.</p>
+                
+                <div class="my-8 flex flex-wrap gap-3 font-mono text-sm">
+                    <span class="px-3 py-1 bg-copper/10 border border-copper/30 rounded text-copper">Python</span>
+                    <span class="px-3 py-1 bg-copper/10 border border-copper/30 rounded text-copper">HTML</span>
+                    <span class="px-3 py-1 bg-copper/10 border border-copper/30 rounded text-copper">C++</span>
+                    <span class="px-3 py-1 bg-copper/10 border border-copper/30 rounded text-copper">Databases</span>
+                    <span class="px-3 py-1 bg-copper/10 border border-copper/30 rounded text-copper">Machine learning</span>
+                </div>
+
+                <p class="story-line font-bold">Another completely different world.</p>
+            </div>
+        </section>
+
+        <!-- ACT V — ARDUINO -->
+        <section id="act-5" class="min-h-screen py-32 border-t border-violet/10">
+            <div class="space-y-8 text-lg md:text-xl">
+                <p class="story-line">Somewhere in between those two worlds I discovered Arduino.</p>
+                <p class="story-line">The first few projects were mostly confusion.</p>
+                <p class="story-line">I copied code from YouTube descriptions.</p>
+                <p class="story-line">Sometimes it compiled.</p>
+                <p class="story-line">Sometimes it didn't.</p>
+                <p class="story-line">Sometimes I had no idea why changing one line fixed everything.</p>
+                
+                <div class="my-12 font-mono text-xs text-violet bg-black/30 p-4 rounded border border-violet/20">
+                    <p class="text-copper mb-2">> Graduating logic...</p>
+                    <p class="story-line">> LEDs became sensors.</p>
+                    <p class="story-line">> Sensors became motors.</p>
+                    <p class="story-line">> Motors became projects.</p>
+                </div>
+
+                <p class="story-line">ESP32 boards, relays, Bluetooth modules, Wi-Fi, servo motors—each project answered one question and created three new ones.</p>
+                <p class="story-line mt-12">Eventually I got tired of asking repair shops to solder things for me.</p>
+                <p class="story-line text-copper font-bold text-2xl">So I bought a soldering iron.</p>
+                <p class="story-line">It wasn't for any specific project.</p>
+                <p class="story-line">It was simply another tool I kept needing.</p>
+                <p class="story-line">Over time I repaired more phones, replaced batteries, bypassed damaged components, and became comfortable working on electronics that would have intimidated me a few years earlier.</p>
+            </div>
+        </section>
+
+        <!-- ACT VI — THE CAR HE ALWAYS WANTED -->
+        <section id="act-6" class="min-h-screen py-32 border-t border-violet/10">
+            <div class="space-y-8 text-lg md:text-xl">
+                <p class="story-line">At some point I realized I finally had enough parts lying around to build something I'd wanted since childhood.</p>
+                <p class="story-line font-bold text-copper text-2xl">A remote control car.</p>
+                <p class="story-line">Except this one wasn't bought from a fair.</p>
+                <p class="story-line text-copper">I designed it myself.</p>
+                <p class="story-line">The controller wasn't another remote.</p>
+                <p class="story-line">It was my phone over Bluetooth.</p>
+                <p class="story-line mt-12">Watching it move across the floor for the first time felt strangely satisfying.</p>
+                <p class="story-line">It wasn't a complicated robot.</p>
+                <p class="story-line font-medium">It was simply something that had existed in my head for years.</p>
+                
+                <p class="story-line mt-16">Not long after that I connected my home's lights and fan to an ESP32 so I could control them from my phone using Google Home.</p>
+                <p class="story-line">Nobody asked for it.</p>
+                <p class="story-line">The existing switches worked perfectly fine.</p>
+                <p class="story-line">I just wanted to know if I could do it.</p>
+                <p class="story-line text-violet font-mono text-base">They're still running today.</p>
+            </div>
+        </section>
+
+        <!-- ACT VII — MAKING THINGS REAL -->
+        <section id="act-7" class="min-h-screen py-32 border-t border-violet/10">
+            <div class="space-y-8 text-lg md:text-xl">
+                <p class="story-line">Somewhere along the way, artificial intelligence became another tool on the desk.</p>
+                <p class="story-line">Instead of spending hours searching across forums, documentation and videos, I could ask questions, compare ideas, debug code, understand electronics, generate designs, or learn completely unfamiliar topics much faster.</p>
+                <p class="story-line">The browser never disappeared.</p>
+                <p class="story-line">Neither did YouTube.</p>
+                <p class="story-line">AI simply became another place where I learned.</p>
+                
+                <p class="story-line mt-16 text-copper font-medium">A year ago I bought my first 3D printer.</p>
+                <p class="story-line">The first prints weren't great.</p>
+                
+                <div class="my-6 space-y-2 font-mono text-xs text-violet pl-4 border-l border-violet/30">
+                    <p class="story-line">> Supports failed.</p>
+                    <p class="story-line">> Corners lifted.</p>
+                    <p class="story-line">> Dimensions were wrong.</p>
+                    <p class="story-line">> Parts snapped.</p>
+                </div>
+
+                <p class="story-line">I spent more time calibrating than printing.</p>
+                <p class="story-line">Eventually I started learning Fusion 360 and designing my own parts instead of downloading someone else's.</p>
+                <p class="story-line">That brought back memories of CAD from mechanical engineering, except now I could hold the finished model a few hours later.</p>
+                <p class="story-line mt-12">I started printing dashboard idols, organizers, and small decorative pieces.</p>
+                <p class="story-line">The layer lines bothered me more than they seemed to bother everyone else.</p>
+                <p class="story-line">So I learned sanding.</p>
+                <p class="story-line">Then primer.</p>
+                <p class="story-line">Then resin.</p>
+                <p class="story-line">Then silicone molds.</p>
+                <p class="story-line text-copper font-medium mt-6">One problem kept leading to another skill.</p>
+
+                <p class="story-line mt-16">Recently I've shifted toward building products instead of just projects.</p>
+                <p class="story-line">One became a mushroom lamp built entirely from PLA.</p>
+                <p class="story-line">Another combined wood and 3D-printed parts into an aroma diffuser.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                    <div class="h-32 bg-black/40 border border-copper/30 rounded flex items-center justify-center font-mono text-xs text-copper/60 p-4 text-center">
+                        [PHOTO: mushroom lamp, final print]
+                    </div>
+                    <div class="h-32 bg-black/40 border border-copper/30 rounded flex items-center justify-center font-mono text-xs text-copper/60 p-4 text-center">
+                        [PHOTO: wood & 3D printed diffuser]
+                    </div>
+                </div>
+
+                <p class="story-line">Neither was perfect.</p>
+                <p class="story-line">Both taught me more than another weekend spent watching tutorials would have.</p>
+            </div>
+        </section>
+
+        <!-- ACT VIII — WHAT DOESN'T FIT ON A RESUME -->
+        <section id="act-8" class="min-h-screen py-32 border-t border-violet/10">
+            <div class="space-y-8 text-lg md:text-xl">
+                <p class="story-line">Life outside those projects wasn't nearly as exciting.</p>
+                <p class="story-line">To pay bills and hostel expenses, I worked delivery jobs.</p>
+                <p class="story-line">Later I ended up in healthcare documentation.</p>
+                <p class="story-line">It's stable work.</p>
+                <p class="story-line">It pays the bills.</p>
+                <p class="story-line">But after enough repetition I found myself doing what I've done with almost everything else.</p>
+                <p class="story-line text-copper font-medium">Trying to automate parts of it.</p>
+                <p class="story-line">Even there, I was more interested in making the work disappear than repeating it forever.</p>
+
+                <p class="story-line mt-16">Looking back, none of this feels planned.</p>
+                <p class="story-line">If someone opened my browser history from the last ten years, they'd probably think several different people had been using the same computer.</p>
+                
+                <div class="my-12 flex flex-wrap gap-2 font-mono text-xs">
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Mechanical drawings</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Arduino libraries</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Linux commands</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Python documentation</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Healthcare workflows</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Fusion 360</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Embedded C</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">3D printing</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Resin casting</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">AI models</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Product photography</span>
+                    <span class="px-3 py-1 bg-violet/10 border border-violet/30 rounded text-offwhite/70">Spanish music</span>
+                </div>
+
+                <p class="story-line">They're all there.</p>
+                <p class="story-line">At the time they felt unrelated.</p>
+                <p class="story-line text-copper font-medium">Now they seem to point in roughly the same direction.</p>
+
+                <div class="mt-16 space-y-4 text-offwhite/60">
+                    <p class="story-line">I've started plenty of things that never became anything.</p>
+                    <p class="story-line">Ideas that stayed ideas.</p>
+                    <p class="story-line">Projects that stopped halfway.</p>
+                    <p class="story-line">Printed parts that ended up in a box.</p>
+                    <p class="story-line">Code that never left my laptop.</p>
+                    <p class="story-line mt-6">Sometimes curiosity pulled me toward the next interesting problem before I finished the previous one.</p>
+                    <p class="story-line">That's something I'm still learning to improve.</p>
+                </div>
+                <p class="story-line text-offwhite font-medium mt-8">Lately I've been trying to finish more than I start.</p>
+            </div>
+        </section>
+
+        <!-- ACT IX — WHERE THIS GOES -->
+        <section id="act-9" class="min-h-screen py-32 border-t border-violet/10">
+            <div class="space-y-8 text-xl md:text-2xl leading-relaxed">
+                <p class="story-line">Building something people can actually use feels different from building something that only proves I can.</p>
+                <p class="story-line mt-12">I don't know exactly where all of this ends.</p>
+                <p class="story-line">I don't really fit into one category.</p>
+                <p class="story-line">I'm not only interested in software.</p>
+                <p class="story-line">Or electronics.</p>
+                <p class="story-line">Or mechanical design.</p>
+                <p class="story-line">Or manufacturing.</p>
+                <p class="story-line text-copper font-medium mt-12">The interesting part has always been where those worlds overlap.</p>
+                <p class="story-line">Where an idea becomes something you can hold, use, break apart, improve, and build again.</p>
+                <p class="story-line mt-12">I'm still following that curiosity.</p>
+                <p class="story-line">The only difference now is that I'm trying to turn it into products, a career, and eventually a business that lets me keep building for a very long time.</p>
+                
+                <div class="pt-24 space-y-4 font-mono text-sm text-violet">
+                    <p class="story-line">I don't think this story is finished yet.</p>
+                    <p class="story-line">I just wanted to write down how I got here so far.</p>
+                </div>
+
+                <!-- Contact links -->
+                <div class="pt-16 flex flex-wrap gap-8 font-mono text-sm">
+                    <a href="mailto:your-email@example.com" class="text-offwhite hover:text-copper transition-colors">[ EMAIL ]</a>
+                    <a href="https://github.com" target="_blank" class="text-offwhite hover:text-copper transition-colors">[ GITHUB ]</a>
+                    <a href="https://linkedin.com" target="_blank" class="text-offwhite hover:text-copper transition-colors">[ LINKEDIN ]</a>
+                    <a href="#" class="text-offwhite hover:text-copper transition-colors">[ RESUME DOWNLOAD ]</a>
                 </div>
             </div>
         </section>
-        
+
+        <!-- THE WORK -->
+        <section id="the-work" class="min-h-screen py-32 border-t-2 border-copper/40">
+            <h2 class="font-display text-4xl md:text-6xl uppercase text-copper mb-16">The Work // Selected Builds</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="border border-violet/20 bg-black/20 p-6 rounded hover:border-copper/50 transition-colors group">
+                    <div class="w-full h-40 bg-black/40 border border-violet/10 mb-6 flex items-center justify-center font-mono text-xs text-violet/50">
+                        [PHOTO: ESP32 BLE Auto-Unlock]
+                    </div>
+                    <h3 class="font-mono text-lg font-bold mb-2 group-hover:text-copper transition-colors">ESP32-S3 Auto-Unlock</h3>
+                    <p class="text-sm text-offwhite/70 mb-4">BLE keyboard-based PC auto-unlock system with WS2812B status light indicators.</p>
+                    <div class="space-y-1 font-mono text-xs">
+                        <p class="text-violet"><span class="text-offwhite/40">Stack:</span> ESP32-S3, C++, BLE, WS2812B</p>
+                        <p class="text-copper/80"><span class="text-offwhite/40">Challenge:</span> Low-power BLE connection latency</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="border border-violet/20 bg-black/20 p-6 rounded hover:border-copper/50 transition-colors group">
+                    <div class="w-full h-40 bg-black/40 border border-violet/10 mb-6 flex items-center justify-center font-mono text-xs text-violet/50">
+                        [PHOTO: Home Relay System]
+                    </div>
+                    <h3 class="font-mono text-lg font-bold mb-2 group-hover:text-copper transition-colors">BLE Home Relay System</h3>
+                    <p class="text-sm text-offwhite/70 mb-4">2-channel relay hardware system paired with Kotlin Android app. Controls real room lighting today.</p>
+                    <div class="space-y-1 font-mono text-xs">
+                        <p class="text-violet"><span class="text-offwhite/40">Stack:</span> Arduino Nano, HC-06, Kotlin</p>
+                        <p class="text-copper/80"><span class="text-offwhite/40">Challenge:</span> Mains voltage relay safety isolation</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="border border-violet/20 bg-black/20 p-6 rounded hover:border-copper/50 transition-colors group">
+                    <div class="w-full h-40 bg-black/40 border border-violet/10 mb-6 flex items-center justify-center font-mono text-xs text-violet/50">
+                        [PHOTO: STM32 EV Dashboard]
+                    </div>
+                    <h3 class="font-mono text-lg font-bold mb-2 group-hover:text-copper transition-colors">STM32 EV ADAS System</h3>
+                    <p class="text-sm text-offwhite/70 mb-4">EV dashboard & ADAS warning system simulated in PICSimLab with ultrasonic collision detection.</p>
+                    <div class="space-y-1 font-mono text-xs">
+                        <p class="text-violet"><span class="text-offwhite/40">Stack:</span> STM32, Embedded C, PICSimLab</p>
+                        <p class="text-copper/80"><span class="text-offwhite/40">Challenge:</span> Real-time sensor sampling without blocking</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="border border-violet/20 bg-black/20 p-6 rounded hover:border-copper/50 transition-colors group">
+                    <div class="w-full h-40 bg-black/40 border border-violet/10 mb-6 flex items-center justify-center font-mono text-xs text-violet/50">
+                        [PHOTO: Mushroom Lamp Product]
+                    </div>
+                    <h3 class="font-mono text-lg font-bold mb-2 group-hover:text-copper transition-colors">Parametric Mushroom Lamp</h3>
+                    <p class="text-sm text-offwhite/70 mb-4">Custom printed diffuser and PLA lamp structure designed in Fusion 360 with integrated warm LEDs.</p>
+                    <div class="space-y-1 font-mono text-xs">
+                        <p class="text-violet"><span class="text-offwhite/40">Stack:</span> Fusion 360, FDM Printing, Post-processing</p>
+                        <p class="text-copper/80"><span class="text-offwhite/40">Challenge:</span> Eliminating visible layer lines via resin sanding</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Core Libraries (Loaded via CDN to avoid NPM) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Animation & Smooth Scroll Engines via CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    
-    <!-- Custom Engine -->
-    <script src="script.js"></script>
+
+    <script>
+        // 1. Initialize Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. Register GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 3. Copper PCB Trace Line Animation
+        gsap.to("#trace-fill", {
+            height: "100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.1
+            }
+        });
+
+        // 4. Subtle line reveal as you scroll
+        gsap.utils.toArray('.story-line').forEach((line) => {
+            gsap.fromTo(line, 
+                { opacity: 0.2, y: 10 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.6,
+                    scrollTrigger: {
+                        trigger: line,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    </script>
 </body>
 </html>
